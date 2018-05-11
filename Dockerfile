@@ -13,11 +13,11 @@ RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/force-unsafe-io && \
     eatmydata -- apt-get install -y apt-transport-https ca-certificates && \
     apt-get clean && rm -Rf /var/lib/apt/lists/*
 
-COPY ./provisioning/deb.sury.list /etc/apt/sources.list.d/deb.sury.list
-COPY ./provisioning/deb.sury.gpg /etc/apt/trusted.gpg.d/debsury.gpg
+COPY ./provisioning/sources.list /etc/apt/sources.list
+COPY ./provisioning/debsury.gpg /etc/apt/trusted.gpg.d/debsury.gpg
 
-RUN apt-get -q update && \
-    eatmydata -- apt-get install -y \
+RUN apt-get -qq update && \
+    eatmydata -- apt-get -qy install \
         apache2 libapache2-mod-php7.1 \
         curl \
         git-core \
