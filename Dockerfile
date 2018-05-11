@@ -21,12 +21,12 @@ RUN apt-get -qq update && \
         git-core \
         netcat \
         php7.1 php7.1-cli php7.1-curl php7.1-json php7.1-xml php7.1-mysql php7.1-mbstring php7.1-bcmath php7.1-zip php7.1-mysql php7.1-dev zlib1g-dev libprotobuf-dev php7.1-sqlite3 && \
-    mkdir /tmp/build && cd /tmp/build && wget -qO pecl.tgz https://pecl.php.net/get/grpc-${GRPC_VERSION}.tgz && tar -zxf pecl.tgz && cd grpc-${GRPC_VERSION} && \
+    mkdir /tmp/build && cd /tmp/build && curl -so pecl.tgz https://pecl.php.net/get/grpc-${GRPC_VERSION}.tgz && tar -zxf pecl.tgz && cd grpc-${GRPC_VERSION} && \
     phpize . && autoreconf --force --install && \
     ./configure && \
     eatmydata -- make && \
     make install && cd /tmp/build && rm pecl.tgz && \
-    cd /tmp/build && wget -qO pecl.tgz https://pecl.php.net/get/protobuf-${PROTOBUF_VERSION}.tgz && tar -zxf pecl.tgz && cd protobuf-${PROTOBUF_VERSION} && \
+    cd /tmp/build && curl -so pecl.tgz https://pecl.php.net/get/protobuf-${PROTOBUF_VERSION}.tgz && tar -zxf pecl.tgz && cd protobuf-${PROTOBUF_VERSION} && \
     phpize . && autoreconf --force --install && \
     ./configure && \
     eatmydata -- make && make install && \
