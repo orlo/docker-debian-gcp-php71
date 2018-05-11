@@ -41,7 +41,6 @@ RUN apt-get -qq update && \
     eatmydata -- apt-get -y autoremove && \
     apt-get clean && \
     rm -Rf /var/lib/apt/lists/* && \
-    rm /etc/apache2/sites-enabled/* && \
     a2enmod rewrite deflate php7.1
 
 RUN echo GMT > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata 
