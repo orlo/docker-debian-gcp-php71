@@ -20,11 +20,7 @@ RUN apt-get -qq update && \
         curl \
         git-core \
         netcat \
-        php7.1 php7.1-cli php7.1-curl php7.1-json php7.1-xml php7.1-mysql php7.1-mbstring php7.1-bcmath php7.1-zip php7.1-mysql php7.1-dev zlib1g-dev libprotobuf-dev \
-        unzip zip \
-        supervisor \
-        mysql-client \
-        jq wget && \
+        php7.1 php7.1-cli php7.1-curl php7.1-json php7.1-xml php7.1-mysql php7.1-mbstring php7.1-bcmath php7.1-zip php7.1-mysql php7.1-dev zlib1g-dev libprotobuf-dev php7.1-sqlite3 && \
     mkdir /tmp/build && cd /tmp/build && wget -qO pecl.tgz https://pecl.php.net/get/grpc-${GRPC_VERSION}.tgz && tar -zxf pecl.tgz && cd grpc-${GRPC_VERSION} && \
     phpize . && autoreconf --force --install && \
     ./configure && \
@@ -45,6 +41,12 @@ RUN echo GMT > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdat
 
 COPY ./provisioning/php.ini /etc/php/7.1/apache2/conf.d/local.ini
 COPY ./provisioning/php.ini /etc/php/7.1/cli/conf.d/local.ini
+
+RUN echo GMT > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata \
+    && mkdir -p "/var/log/apache2" \
+    && ln -sfT /dev/stderr "/var/log/apache2/error.log" \
+    && ln -sfT /dev/stdout "/var/log/apache2/access.log" \
+    && ln -sfT /dev/stdout "/var/log/apache2/other_vhosts_access.log"
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 EXPOSE 80
