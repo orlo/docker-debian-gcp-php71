@@ -8,3 +8,6 @@ See also: https://hub.docker.com/r/socialsigninapp/docker-debian-gcp-php71/
 docker build --build-arg http_proxy=http://192.168.0.66:3128 --build-arg https_proxy=http://192.168.0.66:3128 .
 ```
 
+## Todo
+
+Add checksum checking on the downloaded pecl tgz files.
