@@ -1,8 +1,6 @@
 # docker build --build-arg http_proxy=http://192.168.0.66:3128 --build-arg https_proxy=http://192.168.0.66:3128 .
 FROM debian:stretch
 
-MAINTAINER technical@socialsignin.co.uk
-
 ARG DEBIAN_FRONTEND=noninteractive
 
 ENV GRPC_VERSION 1.11.0
