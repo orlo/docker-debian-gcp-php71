@@ -2,6 +2,8 @@
 FROM debian:stretch
 
 ARG DEBIAN_FRONTEND=noninteractive
+ARG http_proxy=""
+ARG https_proxy=""
 
 ENV GRPC_VERSION 1.11.0
 ENV PROTOBUF_VERSION 3.5.1.1
