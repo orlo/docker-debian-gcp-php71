@@ -5,8 +5,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG http_proxy=""
 ARG https_proxy=""
 
-ENV GRPC_VERSION 1.11.0
-ENV PROTOBUF_VERSION 3.5.1.1
+ENV GRPC_VERSION 1.12.0
+ENV PROTOBUF_VERSION 3.6.0
 RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/force-unsafe-io && \
     apt-get -q update && \
     apt-get install -y eatmydata  && \
@@ -22,7 +22,7 @@ RUN apt-get -qq update && \
         curl \
         git-core \
         netcat \
-        php7.1 php7.1-cli php7.1-curl php7.1-json php7.1-xml php7.1-mysql php7.1-mbstring php7.1-bcmath php7.1-zip php7.1-mysql php7.1-dev php7.1-sqlite3 php7.1-opcache php7.1-xml php7.1-xsl php7.1-intl \
+        php7.1 php7.1-cli php7.1-curl php7.1-json php7.1-xml php7.1-mysql php7.1-mbstring php7.1-bcmath php7.1-zip php7.1-mysql php7.1-dev php7.1-sqlite3 php7.1-opcache php7.1-xml php7.1-xsl php7.1-intl php-sodium \
         zip unzip \
         zlib1g-dev libprotobuf-dev && \
     mkdir /tmp/build && cd /tmp/build && curl -so pecl.tgz https://pecl.php.net/get/grpc-${GRPC_VERSION}.tgz && tar -zxf pecl.tgz && cd grpc-${GRPC_VERSION} && \
