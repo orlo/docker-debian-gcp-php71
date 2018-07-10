@@ -10,4 +10,5 @@ docker build --build-arg http_proxy=http://192.168.0.66:3128 --build-arg https_p
 
 ## Todo
 
-Add checksum checking on the downloaded pecl tgz files.
+ * Add checksum checking on the downloaded pecl tgz files.
+ * Link better to Debian/Debsury.org so we rebuild on change of those files
