@@ -5,7 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG http_proxy=""
 ARG https_proxy=""
 
-ENV GRPC_VERSION 1.12.0
+ENV GRPC_VERSION 1.14.1
 ENV PROTOBUF_VERSION 3.6.1
 RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/force-unsafe-io && \
     apt-get -q update && \
