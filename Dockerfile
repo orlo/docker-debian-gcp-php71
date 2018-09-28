@@ -22,7 +22,8 @@ RUN apt-get -qq update && \
         curl \
         git-core \
         netcat \
-        php7.1 php7.1-cli php7.1-curl php7.1-json php7.1-xml php7.1-mysql php7.1-mbstring php7.1-bcmath php7.1-zip php7.1-mysql php7.1-dev php7.1-sqlite3 php7.1-opcache php7.1-xml php7.1-xsl php7.1-intl php-sodium \
+        jq \
+        php7.1 php7.1-cli php7.1-curl php-json php-xml php-mysql php-mbstring php7.1-bcmath php7.1-zip php7.1-mysql php7.1-dev php7.1-sqlite3 php7.1-opcache php7.1-xml php7.1-xsl php7.1-intl php-sodium \
         zip unzip \
         zlib1g-dev libprotobuf-dev && \
     mkdir /tmp/build && cd /tmp/build && curl -so pecl.tgz https://pecl.php.net/get/grpc-${GRPC_VERSION}.tgz && tar -zxf pecl.tgz && cd grpc-${GRPC_VERSION} && \
